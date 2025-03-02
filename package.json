@@ -1,0 +1,23 @@
+{
+  "dependencies": {
+    "fs-extra": "^11.3.0"
+  },
+  "name": "lesson3_homework",
+  "version": "1.0.0",
+  "main": "homework.js",
+  "devDependencies": {},
+  "scripts": {
+    "go": "node homework.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rockuro709/homework.git"
+  },
+  "author": "Anton Tratsevskii",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rockuro709/homework/issues"
+  },
+  "homepage": "https://github.com/rockuro709/homework#readme",
+  "description": "домашка третьего занятия"
+}
