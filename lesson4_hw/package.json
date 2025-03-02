@@ -1,0 +1,12 @@
+{
+  "name": "lesson4_homework",
+  "version": "1.0.0",
+  "description": "домашка 4го урока",
+  "main": "task.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "go": "node task.js"
+  },
+  "author": "",
+  "license": "ISC"
+}
