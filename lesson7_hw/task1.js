@@ -1,12 +1,15 @@
-const numberOfRolls = 4;
+let allPlayers = [];
+
 
 class Player {
-    constructor(name, sumRolls) {
+    constructor(name, numberOfRolls) {
         this.name = name;
-        this.sumRolls = sumRolls;
+        this.numberOfRolls = numberOfRolls;
+        this.sumRolls = 0;
+        allPlayers.push(this);
     }
     rollDices() {
-        for (let i = 0; i < numberOfRolls; i++) {
+        for (let i = 0; i < this.numberOfRolls; i++) {
         this.sumRolls = this.sumRolls + Math.floor(Math.random()*6+1);
         console.log(this.sumRolls); //проверка
         }   
@@ -16,36 +19,37 @@ class Player {
 
 }
 
-const Vasya = new Player('Vasya', 0);
-Vasya.rollDices();
 
-const Denis = new Player('Denis', 0);
-Denis.rollDices();
+function game (yourNumberOfRolls) {
+    const Vasya = new Player('Vasya', yourNumberOfRolls);
+    Vasya.rollDices();
 
-const Anton = new Player('Anton', 0);
-Anton.rollDices();
+    const Denis = new Player('Denis', yourNumberOfRolls);
+    Denis.rollDices();
+
+    const Sveta = new Player('Sveta', yourNumberOfRolls);
+    Sveta.rollDices();
+
+    const Anton = new Player('Anton', yourNumberOfRolls);
+    Anton.rollDices();
+
+    const Kirill = new Player('Kirill', yourNumberOfRolls);
+    Kirill.rollDices();
 
 
-switch (true) {
-    case Vasya.sumRolls === Denis.sumRolls && Vasya.sumRolls === Anton.sumRolls:
-        console.log('Суммы бросков игроков равны между собой. Ничья!');
-        break;
-    case Vasya.sumRolls === Math.max(Vasya.sumRolls, Denis.sumRolls, Anton.sumRolls) && Denis.sumRolls === Math.max(Vasya.sumRolls, Denis.sumRolls, Anton.sumRolls):
-        console.log('Вася и Денис - ничья, Антон проиграл!');
-        break;
-    case Denis.sumRolls === Math.max(Vasya.sumRolls, Denis.sumRolls, Anton.sumRolls) && Anton.sumRolls === Math.max(Vasya.sumRolls, Denis.sumRolls, Anton.sumRolls):
-        console.log('Денис и Антон - ничья, Вася проиграл!');
-        break;
-    case Vasya.sumRolls === Math.max(Vasya.sumRolls, Denis.sumRolls, Anton.sumRolls) && Anton.sumRolls === Math.max(Vasya.sumRolls, Denis.sumRolls, Anton.sumRolls):
-        console.log('Вася и Антон - ничья, Денис проиграл!');
-        break;
-    case Vasya.sumRolls === Math.max(Vasya.sumRolls, Denis.sumRolls, Anton.sumRolls):
-        console.log('Вася победил!');
-        break;
-    case Denis.sumRolls === Math.max(Vasya.sumRolls, Denis.sumRolls, Anton.sumRolls):
-        console.log('Денис победил!');
-        break;
-    case Anton.sumRolls === Math.max(Vasya.sumRolls, Denis.sumRolls, Anton.sumRolls):
-        console.log('Антон победил!');
-        break;
+    const displayWinners = allPlayers.filter((playerForFilter) => 
+        playerForFilter.sumRolls === Math.max(...allPlayers.map(playerForMap => playerForMap.sumRolls)));
+    
+    console.log(displayWinners); //проверка
+    
+    
+    for (let i = 0; i < displayWinners.length; i++) {
+        console.log(`Победитель ${displayWinners[i].name} с суммой бросков ${displayWinners[i].sumRolls}`);
+        if (displayWinners.length - 1 !== i) {
+            console.log(`А также`);
+        }
+    }
 }
+
+
+game(4);

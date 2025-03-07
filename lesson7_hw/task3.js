@@ -1,16 +1,20 @@
-function friday13(yourDate, lastDate) {
-    console.log(yourDate); // проверка
+function friday13(firstYear, firstMonth, firstDayOfMonth, lastYear, lastMonth, lastDayOfMonth) {
+    firstDate = new Date(Date.UTC(firstYear, firstMonth, firstDayOfMonth));
+    lastDate = new Date(Date.UTC(lastYear, lastMonth, lastDayOfMonth));
+    console.log(firstDate); // проверка
     console.log(lastDate); // проверка
     let counter = 0;
-    while (yourDate <= lastDate) {  
-        if (yourDate.getUTCDay() === 5 && yourDate.getUTCDate() === 13) {
+    while (firstDate <= lastDate) {  
+        if (firstDate.getUTCDay() === 5 && firstDate.getUTCDate() === 13) {
             counter++;
         }
-    yourDate.setUTCDate(yourDate.getUTCDate() + 1);
+    firstDate.setUTCDate(firstDate.getUTCDate() + 1);
     }
     console.log(counter);
 }
 
 
-friday13(new Date(Date.UTC(2024, 2, 5, 12)), new Date(Date.now())); // поиск пятниц 13-го до текущего дня
-//friday13(new Date(Date.UTC(2025, 2, 5, 12)), new Date(Date.UTC(2026, 2, 5, 12))); // поиск пятниц 13-го до даты в будущем
+//введите год-месяц-день, с которых начинать поиск пятниц 13-го, и год-месяц-день, до которых вести поиск
+friday13(2024, 2, 5, 2026, 2, 5); 
+
+
