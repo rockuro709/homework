@@ -44,6 +44,6 @@ const data = [
     "Каждый выбор формирует судьбу — пусть твои выборы будут мудрыми."
 ];
 
-console.log(getNewObj(data, toObj));
-console.log(getNewObj(data, toInt));
 console.log(getNewObj(data, toNewStr));
+console.log(getNewObj(data, toInt));
+console.log(getNewObj(data, toObj));
