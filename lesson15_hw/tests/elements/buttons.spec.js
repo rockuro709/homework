@@ -18,12 +18,12 @@ test.describe('demoqa.com/buttons tests', async () => {
     });
     
     test('should choose Buttons, click on Double-Click-Me-Button and show related message', async ({page}) => {
-        buttons.doubleClick();
+        await buttons.doubleClick();
         await expect(page.locator(buttons.doubleClickMessage)).toBeVisible();
     });
 
     test('should choose Buttons, click on Right-Click-Me-Button and show related message', async ({page}) => {
-        buttons.rightClick();
+        await buttons.rightClick();
         await expect(page.locator(buttons.rightClickMessage)).toBeVisible();
     });
 });
