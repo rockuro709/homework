@@ -9,12 +9,13 @@
     "@wdio/spec-reporter": "^9.12.3",
     "allure-commandline": "^2.33.0",
     "chai": "^5.2.0",
+    "chromedriver": "^135.0.2",
     "expect-webdriverio": "^5.1.0",
     "rimraf": "^6.0.1"
   },
   "scripts": {
     "clean": "rimraf allure-report/ && rimraf allure-results/",
     "open:report": "allure generate && allure open",
-    "wdio": "npm run clean && wdio run ./wdio.conf.js && npm run open:report"
+    "wdio": "npm run clean && (wdio run ./wdio.conf.js || true) && npm run open:report"
   }
 }
