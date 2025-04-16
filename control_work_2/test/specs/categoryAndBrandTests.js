@@ -8,12 +8,12 @@ describe("Category and Brand Selection Tests", () => {
   beforeEach(async () => {
     await Header.navigate("https://www.automationexercise.com/");
   });
-  it("should choose correct category", async () => {
+  it("selects a category and verifies the filtered product results", async () => {
     expect(await CategoryBrands.chooseAndVerifyCategory(TestData.category)).to
       .be.true;
   });
 
-  it("should choose correct brand", async () => {
+  it("selects a brand and verifies the filtered product results", async () => {
     expect(await CategoryBrands.chooseAndVerifyBrand(TestData.brand)).to.be
       .true;
   });

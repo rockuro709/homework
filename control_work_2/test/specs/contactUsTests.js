@@ -7,7 +7,7 @@ describe("Contact Us Tests", () => {
   beforeEach(async () => {
     await Header.navigate("https://www.automationexercise.com/");
   });
-  it("should open feedback form, fill it and send", async () => {
+  it("opens the contact form, fills in user details, and submits feedback", async () => {
     await ContactUs.sendFeedback(TestData.feedbackUser);
     expect(await ContactUs.homeButton.isDisplayed()).to.be.true;
   });

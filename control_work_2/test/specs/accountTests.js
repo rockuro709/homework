@@ -14,7 +14,7 @@ describe("User Account Tests", () => {
     await Header.navigate("https://www.automationexercise.com/");
   });
 
-  it("should register and delete a user account", async () => {
+  it("registers a new user and verifies successful login and account deletion", async () => {
     await Signup.createNewAccount(TestData.fullUser);
     expect(await Header.loggedInAs.getText()).to.equal(
       `${TestData.fullUser.name}`
@@ -26,7 +26,7 @@ describe("User Account Tests", () => {
     expect(await SignupLogin.loginErrorMessage.isDisplayed()).to.be.true;
   });
 
-  it("should login with an existing user account and delete account", async () => {
+  it("logs in with an existing user, verifies session, and deletes the account", async () => {
     await SignupLogin.login(TestData.fastUser);
     expect(await Header.loggedInAs.getText()).to.equal(
       `${TestData.fastUser.name}`

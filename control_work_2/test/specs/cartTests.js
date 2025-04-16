@@ -8,7 +8,7 @@ describe("Cart Tests", () => {
   beforeEach(async () => {
     await Header.navigate("https://www.automationexercise.com/");
   });
-  it("should add item to cart", async () => {
+  it("adds a product to the cart and verifies it appears in the cart summary", async () => {
     const name = await (
       await ProductCard.getName(TestData.idProduct[0])
     ).getText();

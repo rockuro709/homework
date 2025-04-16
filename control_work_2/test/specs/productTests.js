@@ -10,12 +10,12 @@ describe("Product Tests", () => {
     await Header.navigate("https://www.automationexercise.com/");
   });
   TestData.idProduct.forEach((id) => {
-    it("should match product name and price between product card and product page", async () => {
+    it(`validates name and price consistency for product ID: ${id}`, async () => {
       expect(await ProductCard.verifyProductData(id)).to.be.true;
     });
   });
 
-  it("should submit review on product page", async () => {
+  it("submits a product review and verifies submission confirmation", async () => {
     expect(
       await Product.submitReview(TestData.idProduct[0], TestData.feedbackUser)
     ).to.be.true;
