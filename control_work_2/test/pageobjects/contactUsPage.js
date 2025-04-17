@@ -2,7 +2,7 @@ import Base from "./base.js";
 import Header from "./components/header.js";
 import path from "path";
 
-class ContactUs extends Base {
+class ContactUsPage extends Base {
   get nameField() {
     return $('[data-qa="name"]');
   }
@@ -44,4 +44,4 @@ class ContactUs extends Base {
   }
 }
 
-export default new ContactUs();
+export default new ContactUsPage();

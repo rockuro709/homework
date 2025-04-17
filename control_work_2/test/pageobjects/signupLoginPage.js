@@ -1,7 +1,7 @@
 import Base from "./base.js";
 import Header from "./components/header.js";
 
-class SignupLogin extends Base {
+class SignupLoginPage extends Base {
   get loginEmailField() {
     return $('[data-qa="login-email"]');
   }
@@ -27,8 +27,8 @@ class SignupLogin extends Base {
   }
 
   async login(userData) {
-    await Header.signupLoginButton.waitForDisplayed();
-    await Header.signupLoginButton.click();
+    await Header.signupOrLoginButton.waitForDisplayed();
+    await Header.signupOrLoginButton.click();
     await this.loginEmailField.waitForDisplayed();
     await this.loginEmailField.setValue(userData.email);
     await this.loginPasswordField.setValue(userData.password);
@@ -36,8 +36,8 @@ class SignupLogin extends Base {
   }
 
   async newUserSignup(userData) {
-    await Header.signupLoginButton.waitForDisplayed();
-    await Header.signupLoginButton.click();
+    await Header.signupOrLoginButton.waitForDisplayed();
+    await Header.signupOrLoginButton.click();
     await this.signupNameField.waitForDisplayed();
     await this.signupNameField.setValue(userData.name);
     await this.signupEmailField.setValue(userData.email);
@@ -45,4 +45,4 @@ class SignupLogin extends Base {
   }
 }
 
-export default new SignupLogin();
+export default new SignupLoginPage();

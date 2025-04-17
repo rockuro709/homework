@@ -1,6 +1,6 @@
 import Base from "./base.js";
 
-class Continue extends Base {
+class ContinuePage extends Base {
   get continueButton() {
     return $('[data-qa="continue-button"]');
   }
@@ -27,4 +27,4 @@ class Continue extends Base {
   }
 }
 
-export default new Continue();
+export default new ContinuePage();

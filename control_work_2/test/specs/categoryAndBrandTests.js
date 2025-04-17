@@ -1,7 +1,6 @@
 import Header from "../pageobjects/components/header.js";
 import TestData from "../testData.js";
 import { expect } from "chai";
-
 import CategoryBrands from "../pageobjects/components/categoryBrands.js";
 
 describe("Category and Brand Selection Tests", () => {

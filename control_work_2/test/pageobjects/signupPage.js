@@ -1,8 +1,8 @@
 import Base from "./base.js";
-import SignupLogin from "./signupLoginPage.js";
-import Continue from "./continuePage.js";
+import SignupLoginPage from "./signupLoginPage.js";
+import ContinuePage from "./continuePage.js";
 
-class Signup extends Base {
+class SignupPage extends Base {
   get titleMrRadioButton() {
     return $("#uniform-id_gender1");
   }
@@ -69,7 +69,7 @@ class Signup extends Base {
   }
 
   async createNewAccount(userData) {
-    await SignupLogin.newUserSignup(userData);
+    await SignupLoginPage.newUserSignup(userData);
     await this.titleMrRadioButton.waitForDisplayed();
 
     if (userData.title === "Mr") {
@@ -120,8 +120,8 @@ class Signup extends Base {
 
     await this.createAccountButton.scrollIntoView();
     await this.createAccountButton.click();
-    await Continue.clickContinueButton();
+    await ContinuePage.clickContinueButton();
   }
 }
 
-export default new Signup();
+export default new SignupPage();

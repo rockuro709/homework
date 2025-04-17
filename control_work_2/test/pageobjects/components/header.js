@@ -1,5 +1,5 @@
 import Base from "../base.js";
-import Continue from "../continuePage.js";
+import ContinuePage from "../continuePage.js";
 
 class Header extends Base {
   get logoButton() {
@@ -14,7 +14,7 @@ class Header extends Base {
   get cartButton() {
     return $('[href="/view_cart"] .fa.fa-shopping-cart');
   }
-  get signupLoginButton() {
+  get signupOrLoginButton() {
     return $('[href="/login"] .fa.fa-lock');
   }
   get logoutButton() {
@@ -41,14 +41,14 @@ class Header extends Base {
 
   async deleteAccount() {
     await this.deleteAccountButton.click();
-    await Continue.clickContinueButton();
-    await this.signupLoginButton.waitForDisplayed();
+    await ContinuePage.clickContinueButton();
+    await this.signupOrLoginButton.waitForDisplayed();
   }
 
   async logout() {
     await this.logoutButton.waitForDisplayed();
     await this.logoutButton.click();
-    await this.signupLoginButton.waitForDisplayed();
+    await this.signupOrLoginButton.waitForDisplayed();
   }
 }
 

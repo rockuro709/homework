@@ -1,9 +1,8 @@
 import Header from "../pageobjects/components/header.js";
 import TestData from "../testData.js";
 import { expect } from "chai";
-
 import ProductCard from "../pageobjects/components/productCard.js";
-import Product from "../pageobjects/productPage.js";
+import ProductPage from "../pageobjects/productPage.js";
 
 describe("Product Tests", () => {
   beforeEach(async () => {
@@ -17,7 +16,11 @@ describe("Product Tests", () => {
 
   it("submits a product review and verifies submission confirmation", async () => {
     expect(
-      await Product.submitReview(TestData.idProduct[0], TestData.feedbackUser)
-    ).to.be.true;
+      await ProductPage.submitReview(
+        TestData.idProduct[0],
+        TestData.feedbackUser
+      )
+    );
+    expect(await ProductPage.reviewSuccessfulAlert.isDisplayed()).to.be.true;
   });
 });

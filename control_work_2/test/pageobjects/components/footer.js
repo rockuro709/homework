@@ -7,7 +7,7 @@ class Footer extends Base {
   get subscribeButton() {
     return $("#subscribe");
   }
-  get subscribeSuccesAlert() {
+  get subscribeSuccessAlert() {
     return $(".alert-success.alert");
   }
   get scrollUpButton() {
@@ -18,14 +18,16 @@ class Footer extends Base {
     await this.subscribeEmailField.waitForDisplayed();
     await this.subscribeEmailField.setValue(userData.email);
     await this.subscribeButton.click();
-    await this.subscribeSuccesAlert.waitForDisplayed();
+    await this.subscribeSuccessAlert.waitForDisplayed();
   }
 
   async scrollUp() {
     await this.subscribeEmailField.scrollIntoView();
-    await this.scrollUpButton.waitForDisplayed();
-    await this.scrollUpButton.click();
-    await this.waitForElementToDisappear(this.scrollUpButton); //кастомная ожидалка до пропажи элемента
+    const button = await this.scrollUpButton;
+    await button.waitForDisplayed();
+    //кнопка 50/50 закрыта рекламой в шэдоуруте, шэдоурут одолеть не получилось
+    await browser.execute((el) => el.click(), button);
+    await button.waitForDisplayed({ reverse: true });
   }
 }
 

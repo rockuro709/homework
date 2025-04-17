@@ -2,7 +2,7 @@ import Header from "../pageobjects/components/header.js";
 import TestData from "../testData.js";
 import { expect } from "chai";
 import ProductCard from "../pageobjects/components/productCard.js";
-import Cart from "../pageobjects/cartPage.js";
+import CartPage from "../pageobjects/cartPage.js";
 
 describe("Cart Tests", () => {
   beforeEach(async () => {
@@ -12,7 +12,7 @@ describe("Cart Tests", () => {
     const name = await (
       await ProductCard.getName(TestData.idProduct[0])
     ).getText();
-    await Cart.addToCart(TestData.idProduct[0]);
-    expect(await Cart.firstItem.getText()).to.equal(name);
+    await CartPage.addToCart(TestData.idProduct[0]);
+    expect(await CartPage.firstItem.getText()).to.equal(name);
   });
 });

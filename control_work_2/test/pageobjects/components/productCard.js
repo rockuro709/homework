@@ -1,5 +1,5 @@
 import Base from "../base.js";
-import Product from "../productPage.js";
+import ProductPage from "../productPage.js";
 
 class ProductCard extends Base {
   async getPrice(id) {
@@ -17,6 +17,7 @@ class ProductCard extends Base {
     );
   }
 
+  //в будущем разбить метод на получение данных и сравнение данных (пока не придумал зачем)
   async verifyProductData(id) {
     const normalizeText = (text) => text.replace(/\s+/g, " ");
 
@@ -27,8 +28,8 @@ class ProductCard extends Base {
 
     await this.clickViewProductButton(id);
 
-    const productName = normalizeText(await Product.name.getText());
-    const productPrice = await Product.price.getText();
+    const productName = normalizeText(await ProductPage.name.getText());
+    const productPrice = await ProductPage.price.getText();
 
     return productName === productCardName && productPrice === productCardPrice;
   }

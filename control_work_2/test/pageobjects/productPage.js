@@ -1,7 +1,7 @@
 import Base from "./base.js";
 import ProductCard from "./components/productCard.js";
 
-class Product extends Base {
+class ProductPage extends Base {
   get name() {
     return $(".product-information h2");
   }
@@ -14,7 +14,7 @@ class Product extends Base {
   get quantityInput() {
     return $("#quantity");
   }
-  get addToCardButton() {
+  get addToCartButton() {
     return $(".btn.btn-default.cart");
   }
   get availability() {
@@ -51,8 +51,7 @@ class Product extends Base {
     await this.reviewSubmitButton.scrollIntoView();
     await this.reviewSubmitButton.click();
     await this.reviewSuccessfulAlert.waitForDisplayed();
-    return await this.reviewSuccessfulAlert.isDisplayed();
   }
 }
 
-export default new Product();
+export default new ProductPage();
