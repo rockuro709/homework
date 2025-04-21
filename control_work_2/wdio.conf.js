@@ -1,3 +1,10 @@
+import getPort from "get-port";
+import allureCommand from "allure-commandline";
+import killPort from "kill-port";
+import fs from 'fs';
+import path from 'path';
+import { addAttachment } from '@wdio/allure-reporter';
+
 export const config = {
   //
   // ====================
@@ -52,20 +59,20 @@ export const config = {
       browserName: "chrome",
       "goog:chromeOptions": {
         args: [
-          '--whitelisted-ips=',
-          '--disable-infobars=true',
-          '--disable-gpu',
+          /*           "--whitelisted-ips=",
+          "--disable-infobars=true",
+          "--disable-gpu",
+          "test-type=browser",
+          "disable-notifications",
+          "disable-application-cache",
+          "-disable-extensions",
+          "--ignore-certificate-errors",
+          "enable-automation",
+          "--disable-dev-shm-usage",
+          "--disable-browser-side-navigation",
+          "--no-sandbox",
+          "--enable-logging", */
           "window-size=1920,1080",
-          'test-type=browser',
-          'disable-notifications',
-          'disable-application-cache',
-          '-disable-extensions',
-          '--ignore-certificate-errors',
-          'enable-automation',
-          '--disable-dev-shm-usage',
-          '--disable-browser-side-navigation',
-          '--no-sandbox',
-          '--enable-logging',
         ],
       },
     },
@@ -251,11 +258,21 @@ export const config = {
    * @param {boolean} result.passed    true if test has passed, otherwise false
    * @param {object}  result.retries   information about spec related retries, e.g. `{ attempts: 0, limit: 0 }`
    */
-  afterTest: async function (test, context, { error, passed }) {
+  afterTest: async function (test, context, { error, result, duration, passed, retries }) {
     if (!passed) {
-      const timestamp = new Date().toISOString().replace(/[:.]/g, "-");
-      const filename = `ERROR_${test.title}_${timestamp}.png`;
-      await browser.saveScreenshot(`./errorShots/${filename}`);
+      const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
+      const testName = test.title.replace(/\s+/g, '_');
+      const fileName = `${testName}_${timestamp}.png`;
+      const filePath = path.join('error-shots', fileName);
+  
+      // Убедимся, что папка существует
+      fs.mkdirSync('error-shots', { recursive: true });
+  
+      // Сохраняем скриншот
+      await browser.saveScreenshot(filePath);
+  
+      // Прикрепляем к Allure-отчёту
+      addAttachment('Screenshot on Failure', fs.readFileSync(filePath), 'image/png');
     }
   },
 
@@ -301,6 +318,37 @@ export const config = {
    */
   // onComplete: function(exitCode, config, capabilities, results) {
   // },
+  onComplete: async function () {
+    const reportError = new Error("Could not generate or serve Allure report");
+
+    try {
+      // 1. Находим свободный порт (предпочтительно 65292)
+      const port = await getPort({ port: [65292] });
+      console.log(`Используем порт ${port} для Allure-сервера`);
+
+      await killPort(65292);
+      console.log("Порт 65292 освобождён");
+
+      // 2. Запускаем 'allure serve' — генерируем + открываем репорт
+      const serve = allureCommand(["serve", "allure-results", "--port", port]);
+
+      // 3. Ожидаем завершения процесса
+      await new Promise((resolve, reject) => {
+        serve.on("exit", (code) => {
+          if (code !== 0) {
+            return reject(reportError);
+          }
+          console.log(`✅ Allure report served at http://127.0.0.1:${port}`);
+          resolve();
+        });
+        serve.on("error", (err) => reject(err));
+      });
+    } catch (err) {
+      console.error("❌ Ошибка в onComplete при запуске Allure serve:", err);
+      throw err;
+    }
+  },
+
   /**
    * Gets executed when a refresh happens.
    * @param {string} oldSessionId session ID of the old session

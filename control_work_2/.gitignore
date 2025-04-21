@@ -10,3 +10,4 @@ playwright/.cache
 
 allure-results
 allure-report
+error-shots
