@@ -2,8 +2,12 @@ node_modules
 reports
 
 # Playwright
-node_modules/
-/test-results/
-/playwright-report/
-/blob-report/
-/playwright/.cache/
+test-results
+playwright-report
+blob-report
+playwright/.cache
+
+
+allure-results
+allure-report
+error-shots
