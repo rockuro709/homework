@@ -1,0 +1,23 @@
+{
+  "name": "control_work_2",
+  "type": "module",
+  "devDependencies": {
+    "@wdio/allure-reporter": "^9.12.3",
+    "@wdio/cli": "^9.12.4",
+    "@wdio/local-runner": "^9.12.4",
+    "@wdio/mocha-framework": "^9.12.3",
+    "@wdio/spec-reporter": "^9.12.3",
+    "allure-commandline": "^2.33.0",
+    "chai": "^5.2.0",
+    "chromedriver": "^135.0.2",
+    "expect-webdriverio": "^5.1.0",
+    "open": "^10.1.1",
+    "rimraf": "^6.0.1",
+    "kill-port": "^2.0.1"
+  },
+  "scripts": {
+    "clean": "rimraf allure-report/ && rimraf allure-results/ && rimraf error-shots/",
+    "open:report": "allure generate && allure open",
+    "wdio": "npm run clean && wdio run ./wdio.conf.js"
+  }
+}

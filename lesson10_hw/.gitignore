@@ -1,0 +1,15 @@
+node_modules
+reports
+
+# Playwright
+test-results
+playwright-report
+blob-report
+playwright/.cache
+
+
+allure-results
+allure-report
+error-shots
+
+js-files
