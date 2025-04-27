@@ -16,9 +16,9 @@ jobs:
       - name: checkout
         uses: actions/checkout@v3
       - name: Install Dependencies
-        working-directory: ./homework/lesson9_hw
+        working-directory: /lesson9_hw
         run: npm install
       - name: Run Unit Test
-        working-directory: ./homework/lesson9_hw
+        working-directory: /lesson9_hw
         run: npm run test
  
