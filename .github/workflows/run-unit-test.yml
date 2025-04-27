@@ -1,0 +1,23 @@
+name: Run unit tests
+
+on:
+  push:
+    branches:
+      - "main"
+  pull_request:
+    branches:
+      - "**"
+
+jobs:
+  testing:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+      - name: Install Dependencies
+        working-directory: ./lesson9
+        run: npm install
+      - name: Run Unit Test
+        working-directory: ./lesson9
+        run: npm run test
