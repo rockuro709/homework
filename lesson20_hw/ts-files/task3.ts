@@ -1,22 +1,21 @@
-export class ObjectManipulator {
+export class ObjectManipulator<T> {
+  constructor(protected obj: T) {}
 
-    constructor(protected obj) {}
+  public set<K extends keyof T>(key: K, value: T[K]): ObjectManipulator<T> {
+    return new ObjectManipulator({ ...this.obj, [key]: value });
+  }
 
-    public set(key, value) {
-        return new ObjectManipulator({...this.obj, [key]: value});
-    }
+  public get<K extends keyof T>(key: K): T[K] {
+    return this.obj[key];
+  }
 
-    public get(key) {
-        return this.obj[key];
-    }
+  public delete<K extends keyof T>(key: K): ObjectManipulator<T> {
+    const newObj = { ...this.obj };
+    delete newObj[key];
+    return new ObjectManipulator(newObj);
+  }
 
-    public delete(key) {
-        const newObj = {...this.obj};
-        delete newObj[key];
-        return new ObjectManipulator(newObj);
-    }
-
-    public getObject() {
-        return this.obj;
-    }
+  public getObject(): T {
+    return this.obj;
+  }
 }
