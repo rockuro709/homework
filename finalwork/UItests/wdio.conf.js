@@ -342,6 +342,10 @@ export const config = {
   // onComplete: function(exitCode, config, capabilities, results) {
   // },
   onComplete: async function () {
+    if (process.env.CI) {
+      console.log("CI environment detected, skipping Allure report generation.");
+      return;
+    }
     const reportError = new Error("Could not generate or serve Allure report");
 
     try {

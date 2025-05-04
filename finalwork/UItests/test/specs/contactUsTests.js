@@ -3,7 +3,7 @@ import TestData from "../testData/testData.js";
 import { expect } from "chai";
 import ContactUsPage from "../pageobjects/contactUsPage.js";
 
-describe.skip("Contact Us Tests", () => {
+describe("Contact Us Tests", () => {
   beforeEach(async () => {
     await Header.navigate("https://www.automationexercise.com/");
   });

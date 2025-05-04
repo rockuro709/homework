@@ -3,7 +3,7 @@ import TestData from "../testData/testData.js";
 import { expect } from "chai";
 import CategoryBrands from "../pageobjects/components/categoryBrands.js";
 
-describe.skip("Category and Brand Selection Tests", () => {
+describe("Category and Brand Selection Tests", () => {
   beforeEach(async () => {
     await Header.navigate("https://www.automationexercise.com/");
   });

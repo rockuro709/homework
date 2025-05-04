@@ -3,7 +3,7 @@ import TestData from "../testData/testData.js";
 import { expect } from "chai";
 import Footer from "../pageobjects/components/footer.js";
 
-describe.skip("Footer Subscription Tests", () => {
+describe("Footer Subscription Tests", () => {
   beforeEach(async () => {
     await Header.navigate("https://www.automationexercise.com/");
     //await browser.refresh();

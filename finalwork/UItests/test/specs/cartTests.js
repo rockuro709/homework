@@ -4,7 +4,7 @@ import { expect } from "chai";
 import ProductCard from "../pageobjects/components/productCard.js";
 import CartPage from "../pageobjects/cartPage.js";
 
-describe.skip("Cart Tests", () => {
+describe("Cart Tests", () => {
   beforeEach(async () => {
     await Header.navigate("https://www.automationexercise.com/");
   });
