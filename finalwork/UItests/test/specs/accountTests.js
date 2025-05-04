@@ -1,4 +1,3 @@
-import { expect } from "@wdio/globals";
 import Header from "../pageobjects/components/header.js";
 import TestData from "../testData/testData.js";
 import SignupPage from "../pageobjects/signupPage.js";

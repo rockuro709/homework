@@ -23,7 +23,7 @@
     "@wdio/mocha-framework": "^9.12.3",
     "@wdio/spec-reporter": "^9.12.3",
     "allure-commandline": "^2.33.0",
-    "chai": "^5.2.0",
+    "axios": "^1.9.0",
     "chromedriver": "^135.0.2",
     "expect-webdriverio": "^5.1.0",
     "kill-port": "^2.0.1",
@@ -31,7 +31,6 @@
     "node-fetch": "^3.3.2",
     "open": "^10.1.1",
     "rimraf": "^6.0.1",
-    "unzipper": "^0.12.3",
-    "axios": "^1.9.0"
+    "unzipper": "^0.12.3"
   }
 }
