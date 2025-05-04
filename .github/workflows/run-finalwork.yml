@@ -1,0 +1,24 @@
+name: Run finalwork tests
+
+on:
+  push:
+    branches:
+      - "finalwork"
+  pull_request:
+    branches:
+      - "**"
+
+jobs:
+  testing:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+      - name: Install Dependencies
+        working-directory: ./finalwork/UItests
+        run: npm install
+      - name: Run UI Tests
+        working-directory: ./finalwork/UItests
+        run: npm run wdio
+ 
