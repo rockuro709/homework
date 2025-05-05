@@ -1,7 +1,6 @@
 import Base from "./base.js";
 import SignupLoginPage from "./signupLoginPage.js";
 import ContinuePage from "./continuePage.js";
-import axios from "axios";
 
 class SignupPage extends Base {
   get titleMrRadioButton() {
