@@ -41,13 +41,12 @@ class Header extends Base {
 
   async deleteAccount() {
     await this.deleteAccountButton.click();
-    await ContinuePage.clickContinueButton();
+    await this.waitAndClick(ContinuePage.continueButton);
     await this.signupOrLoginButton.waitForDisplayed();
   }
 
   async logout() {
-    await this.logoutButton.waitForDisplayed();
-    await this.logoutButton.click();
+    await this.waitAndClick(this.logoutButton);
     await this.signupOrLoginButton.waitForDisplayed();
   }
 }

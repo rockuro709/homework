@@ -10,7 +10,7 @@ describe("Cart Tests", () => {
 
   it("adds a product to the cart and verifies it appears in the cart summary", async () => {
     const name = await (
-      await ProductCard.getName(TestData.idProduct[0])
+      await ProductCard.getNameById(TestData.idProduct[0])
     ).getText();
     await CartPage.addToCart(TestData.idProduct[0]);
     await expect(CartPage.firstItem).toHaveText(name);

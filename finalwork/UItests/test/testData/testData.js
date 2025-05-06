@@ -49,7 +49,7 @@ export default class TestData {
     message: "feedback",
   };
 
-  static idProduct = [1, 2];
+  static idProduct = [35, 2];
 
   static category = ["kids", "kids-tops&shirts"];
 

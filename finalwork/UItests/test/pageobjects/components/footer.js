@@ -15,20 +15,25 @@ class Footer extends Base {
   }
 
   async subscribe(userData) {
-    await this.subscribeEmailField.waitForDisplayed();
-    await this.subscribeEmailField.setValue(userData.email);
+    await this.waitAndSetValue(this.subscribeEmailField, userData.email);
     await this.subscribeButton.click();
     await this.subscribeSuccessAlert.waitForDisplayed();
   }
 
   async scrollUp() {
     await this.subscribeEmailField.scrollIntoView();
-    const button = await this.scrollUpButton;
-    await button.waitForDisplayed();
-    //кнопка 50/50 закрыта рекламой в шэдоуруте, шэдоурут одолеть не получилось
-    await browser.execute((el) => el.click(), button);
-    await button.waitForDisplayed({ reverse: true });
+    await this.waitAndClick(this.scrollUpButton);
+    await this.scrollUpButton.waitForDisplayed({ reverse: true });
   }
 }
 
 export default new Footer();
+
+// метод при включённой рекламе
+// async scrollUp() {
+//   await this.subscribeEmailField.scrollIntoView();
+//   const button = await this.scrollUpButton;
+//   await button.waitForDisplayed();
+//   await browser.execute((el) => el.click(), button);
+//   await button.waitForDisplayed({ reverse: true });
+// }

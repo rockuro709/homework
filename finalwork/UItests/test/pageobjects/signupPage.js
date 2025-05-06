@@ -118,9 +118,8 @@ class SignupPage extends Base {
     await this.zipcodeField.setValue(userData.zipcode);
     await this.mobileNumberField.setValue(userData.mobileNumber);
 
-    await this.createAccountButton.scrollIntoView();
     await this.createAccountButton.click();
-    await ContinuePage.clickContinueButton();
+    await this.waitAndClick(ContinuePage.continueButton);
   }
 }
 

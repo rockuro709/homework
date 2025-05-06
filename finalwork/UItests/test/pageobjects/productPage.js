@@ -43,12 +43,10 @@ class ProductPage extends Base {
   }
 
   async submitReview(id, userData) {
-    await ProductCard.clickViewProductButton(id);
-    await this.reviewNameField.waitForDisplayed();
-    await this.reviewNameField.setValue(userData.name);
+    await this.waitAndClick(await ProductCard.getViewProductButtonById(id));
+    await this.waitAndSetValue(this.reviewNameField, userData.name);
     await this.reviewEmailField.setValue(userData.email);
     await this.reviewField.setValue(userData.message);
-    await this.reviewSubmitButton.scrollIntoView();
     await this.reviewSubmitButton.click();
     await this.reviewSuccessfulAlert.waitForDisplayed();
   }

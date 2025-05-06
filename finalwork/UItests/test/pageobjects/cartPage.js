@@ -7,18 +7,14 @@ class CartPage extends Base {
     return $("#cart_info_table");
   }
 
-  //переделать в универсальный геттер (пока не знаю как: динамический локатор или брать массив локаторов через $$)
   get firstItem() {
     return $('(//*[@class="cart_description"]//h4/a)[1]');
   }
 
   async addToCart(id) {
-    const addToCartButton = await ProductCard.getAddToCartButton(id);
-    await addToCartButton.waitForDisplayed();
-    await addToCartButton.scrollIntoView();
-    await addToCartButton.click();
+    await this.waitAndClick(await ProductCard.getAddToCartButtonById(id));
 
-    await ContinuePage.clickViewCartButton();
+    await this.waitAndClick(ContinuePage.viewCartButton);
 
     await this.cartTable.waitForDisplayed();
   }

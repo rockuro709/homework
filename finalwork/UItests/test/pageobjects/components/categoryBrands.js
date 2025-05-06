@@ -42,10 +42,8 @@ class CategoryBrands extends Base {
     return mapping[name];
   }
 
-  async chooseAndVerify(element, expectedText) {
-    await element.waitForDisplayed();
-    await element.scrollIntoView();
-    await element.click();
+  async chooseAndVerify(locator, expectedText) {
+    await this.waitAndClick(locator);
 
     const text = await this.textCenter.getText();
     const textArray = expectedText

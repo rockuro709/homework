@@ -27,10 +27,8 @@ class ContactUsPage extends Base {
   }
 
   async sendFeedback(userData) {
-    await Header.contactUsButton.waitForDisplayed();
-    await Header.contactUsButton.click();
-    await this.nameField.waitForDisplayed();
-    await this.nameField.setValue(userData.name);
+    await this.waitAndClick(Header.contactUsButton);
+    await this.waitAndSetValue(this.nameField, userData.name);
     await this.emailField.setValue(userData.email);
     await this.subjectField.setValue(userData.subject);
     await this.messageField.setValue(userData.message);

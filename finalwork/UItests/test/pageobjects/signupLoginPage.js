@@ -23,27 +23,23 @@ class SignupLoginPage extends Base {
   }
 
   get loginErrorMessage() {
-    return $('.login-form p');
+    return $(".login-form p");
   }
 
   get signupErrorMessage() {
-    return $('.signup-form p');
+    return $(".signup-form p");
   }
 
   async login(userData) {
-    await Header.signupOrLoginButton.waitForDisplayed();
-    await Header.signupOrLoginButton.click();
-    await this.loginEmailField.waitForDisplayed();
-    await this.loginEmailField.setValue(userData.email);
+    await this.waitAndClick(Header.signupOrLoginButton);
+    await this.waitAndSetValue(this.loginEmailField, userData.email);
     await this.loginPasswordField.setValue(userData.password);
     await this.loginButton.click();
   }
 
   async newUserSignup(userData) {
-    await Header.signupOrLoginButton.waitForDisplayed();
-    await Header.signupOrLoginButton.click();
-    await this.signupNameField.waitForDisplayed();
-    await this.signupNameField.setValue(userData.name);
+    await this.waitAndClick(Header.signupOrLoginButton);
+    await this.waitAndSetValue(this.signupNameField, userData.name);
     await this.signupEmailField.setValue(userData.email);
     await this.signupButton.click();
   }
