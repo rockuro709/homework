@@ -5,6 +5,8 @@ import fs from "fs";
 import path from "path";
 import { addAttachment } from "@wdio/allure-reporter";
 
+const useCucumber = process.env.TEST_FRAMEWORK === "cucumber";
+
 export const config = {
   //
   // ====================
@@ -27,7 +29,9 @@ export const config = {
   // The path of the spec files will be resolved relative from the directory of
   // of the config file unless it's absolute.
   //
-  specs: ["./test/specs/**/*.js"],
+  specs: useCucumber
+    ? ["./test/features/**/*.feature"]
+    : ["./test/specs/**/*.js"],
   // Patterns to exclude.
   exclude: [
     // 'path/to/excluded/files'
@@ -71,7 +75,7 @@ export const config = {
           // "--disable-dev-shm-usage",
           // "--disable-browser-side-navigation",
           // "--no-sandbox",
-          // "--enable-logging", 
+          // "--enable-logging",
           "window-size=1920,1080",
           `--load-extension=${process.cwd()}/extensions/ublockOriginLite`,
         ],
@@ -134,7 +138,7 @@ export const config = {
   //
   // Make sure you have the wdio adapter package for the specific framework installed
   // before running any tests.
-  framework: "mocha",
+  framework: useCucumber ? "cucumber" : "mocha",
 
   //
   // The number of times to retry the entire specfile when it fails as a whole
@@ -149,14 +153,37 @@ export const config = {
   // Test reporter for stdout.
   // The only one supported by default is 'dot'
   // see also: https://webdriver.io/docs/dot-reporter
-  reporters: ["spec", ["allure", { outputDir: "allure-results" }]],
+  reporters: [
+    "spec",
+    [
+      "allure",
+      {
+        outputDir: "allure-results",
+        ...(useCucumber ? { disableMochaHooks: true } : {}),
+      },
+    ],
+  ],
 
   // Options to be passed to Mocha.
   // See the full list at http://mochajs.org/
-  mochaOpts: {
-    ui: "bdd",
-    timeout: 60000,
-  },
+
+  ...(useCucumber
+    ? {
+        cucumberOpts: {
+          require: ["./test/step-definitions/**/*.js"],
+          timeout: 60000,
+          backtrace: true,
+          dryRun: false,
+          format: ["pretty"],
+          snippets: true,
+        },
+      }
+    : {
+        mochaOpts: {
+          ui: "bdd",
+          timeout: 60000,
+        },
+      }),
 
   //
   // =====
@@ -343,7 +370,9 @@ export const config = {
   // },
   onComplete: async function () {
     if (process.env.CI) {
-      console.log("CI environment detected, skipping Allure report generation.");
+      console.log(
+        "CI environment detected, skipping Allure report generation."
+      );
       return;
     }
     const reportError = new Error("Could not generate or serve Allure report");

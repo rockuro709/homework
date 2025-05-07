@@ -20,5 +20,5 @@ jobs:
         run: npm install
       - name: Run UI Tests
         working-directory: ./finalwork/UItests
-        run: npm run wdio
+        run: npm run test:cucumber
  

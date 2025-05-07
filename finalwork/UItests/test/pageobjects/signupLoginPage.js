@@ -30,17 +30,17 @@ class SignupLoginPage extends Base {
     return $(".signup-form p");
   }
 
-  async login(userData) {
+  async login(userKey) {
     await this.waitAndClick(Header.signupOrLoginButton);
-    await this.waitAndSetValue(this.loginEmailField, userData.email);
-    await this.loginPasswordField.setValue(userData.password);
+    await this.waitAndSetValue(this.loginEmailField, userKey.email);
+    await this.loginPasswordField.setValue(userKey.password);
     await this.loginButton.click();
   }
 
-  async newUserSignup(userData) {
+  async newUserSignup(userKey) {
     await this.waitAndClick(Header.signupOrLoginButton);
-    await this.waitAndSetValue(this.signupNameField, userData.name);
-    await this.signupEmailField.setValue(userData.email);
+    await this.waitAndSetValue(this.signupNameField, userKey.name);
+    await this.signupEmailField.setValue(userKey.email);
     await this.signupButton.click();
   }
 }

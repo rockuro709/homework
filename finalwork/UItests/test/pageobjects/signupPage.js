@@ -68,55 +68,53 @@ class SignupPage extends Base {
     return $('[data-qa="create-account"]');
   }
 
-  async createNewAccount(userData) {
-    await SignupLoginPage.newUserSignup(userData);
+  async createNewAccount(userKey) {
+    await SignupLoginPage.newUserSignup(userKey);
     await this.titleMrRadioButton.waitForDisplayed();
 
-    if (userData.title === "Mr") {
+    if (userKey.title === "Mr") {
       await this.titleMrRadioButton.click();
-    } else if (userData.title === "Mrs") {
+    } else if (userKey.title === "Mrs") {
       await this.titleMrsRadioButton.click();
     }
 
-    await this.passwordField.setValue(userData.password);
+    await this.passwordField.setValue(userKey.password);
 
-    if (userData.dayOfBirth && userData.monthOfBirth && userData.yearOfBirth) {
-      await this.dayOfBirthDropdown.selectByVisibleText(userData.dayOfBirth);
-      await this.monthOfBirthDropdown.selectByVisibleText(
-        userData.monthOfBirth
-      );
-      await this.yearOfBirthDropdown.selectByVisibleText(userData.yearOfBirth);
+    if (userKey.dayOfBirth && userKey.monthOfBirth && userKey.yearOfBirth) {
+      await this.dayOfBirthDropdown.selectByVisibleText(userKey.dayOfBirth);
+      await this.monthOfBirthDropdown.selectByVisibleText(userKey.monthOfBirth);
+      await this.yearOfBirthDropdown.selectByVisibleText(userKey.yearOfBirth);
     }
 
-    if (userData.newsletterCheckbox === "yes") {
+    if (userKey.newsletterCheckbox === "yes") {
       await this.newsletterCheckbox.click();
     }
 
-    if (userData.specialOffersCheckbox === "yes") {
+    if (userKey.specialOffersCheckbox === "yes") {
       await this.specialOffersCheckbox.click();
     }
 
-    await this.firstNameField.setValue(userData.firstName);
-    await this.lastNameField.setValue(userData.lastName);
+    await this.firstNameField.setValue(userKey.firstName);
+    await this.lastNameField.setValue(userKey.lastName);
 
-    if (userData.company) {
-      await this.companyField.setValue(userData.company);
+    if (userKey.company) {
+      await this.companyField.setValue(userKey.company);
     }
 
-    await this.address1Field.setValue(userData.address1);
+    await this.address1Field.setValue(userKey.address1);
 
-    if (userData.address2) {
-      await this.address2Field.setValue(userData.address2);
+    if (userKey.address2) {
+      await this.address2Field.setValue(userKey.address2);
     }
 
-    if (userData.country) {
-      await this.countryDropdown.selectByVisibleText(userData.country);
+    if (userKey.country) {
+      await this.countryDropdown.selectByVisibleText(userKey.country);
     }
 
-    await this.stateField.setValue(userData.state);
-    await this.cityField.setValue(userData.city);
-    await this.zipcodeField.setValue(userData.zipcode);
-    await this.mobileNumberField.setValue(userData.mobileNumber);
+    await this.stateField.setValue(userKey.state);
+    await this.cityField.setValue(userKey.city);
+    await this.zipcodeField.setValue(userKey.zipcode);
+    await this.mobileNumberField.setValue(userKey.mobileNumber);
 
     await this.createAccountButton.click();
     await this.waitAndClick(ContinuePage.continueButton);

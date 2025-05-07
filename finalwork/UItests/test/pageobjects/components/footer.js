@@ -14,8 +14,8 @@ class Footer extends Base {
     return $("#scrollUp");
   }
 
-  async subscribe(userData) {
-    await this.waitAndSetValue(this.subscribeEmailField, userData.email);
+  async subscribe(userKey) {
+    await this.waitAndSetValue(this.subscribeEmailField, userKey.email);
     await this.subscribeButton.click();
     await this.subscribeSuccessAlert.waitForDisplayed();
   }

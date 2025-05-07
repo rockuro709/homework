@@ -14,18 +14,22 @@
     "open:report": "allure generate && allure open",
     "wdio": "npm run clean && wdio run ./wdio.conf.js",
     "postinstall": "node scripts/installUblock.js",
-    "lint": "npx eslint test/"
+    "lint": "npx eslint test/",
+    "test:mocha": "npm run clean && cross-env TEST_FRAMEWORK=mocha wdio run wdio.conf.js",
+    "test:cucumber": "npm run clean && cross-env TEST_FRAMEWORK=cucumber wdio run wdio.conf.js"
   },
   "devDependencies": {
     "@eslint/js": "^9.26.0",
     "@ljharb/tsconfig": "^0.3.2",
     "@wdio/allure-reporter": "^9.12.3",
     "@wdio/cli": "^9.12.4",
+    "@wdio/cucumber-framework": "^9.12.6",
     "@wdio/local-runner": "^9.12.4",
     "@wdio/mocha-framework": "^9.12.3",
     "@wdio/spec-reporter": "^9.12.3",
     "allure-commandline": "^2.33.0",
     "chromedriver": "^135.0.2",
+    "cross-env": "^7.0.3",
     "eslint": "^9.26.0",
     "eslint-plugin-jsdoc": "^50.6.11",
     "eslint-plugin-mocha": "^11.0.0",

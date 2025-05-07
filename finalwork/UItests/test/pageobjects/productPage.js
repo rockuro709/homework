@@ -42,11 +42,11 @@ class ProductPage extends Base {
     return $(".form-row span");
   }
 
-  async submitReview(id, userData) {
+  async submitReview(id, userKey) {
     await this.waitAndClick(await ProductCard.getViewProductButtonById(id));
-    await this.waitAndSetValue(this.reviewNameField, userData.name);
-    await this.reviewEmailField.setValue(userData.email);
-    await this.reviewField.setValue(userData.message);
+    await this.waitAndSetValue(this.reviewNameField, userKey.name);
+    await this.reviewEmailField.setValue(userKey.email);
+    await this.reviewField.setValue(userKey.message);
     await this.reviewSubmitButton.click();
     await this.reviewSuccessfulAlert.waitForDisplayed();
   }

@@ -26,12 +26,12 @@ class ContactUsPage extends Base {
     return $(".btn.btn-success");
   }
 
-  async sendFeedback(userData) {
+  async sendFeedback(userKey) {
     await this.waitAndClick(Header.contactUsButton);
-    await this.waitAndSetValue(this.nameField, userData.name);
-    await this.emailField.setValue(userData.email);
-    await this.subjectField.setValue(userData.subject);
-    await this.messageField.setValue(userData.message);
+    await this.waitAndSetValue(this.nameField, userKey.name);
+    await this.emailField.setValue(userKey.email);
+    await this.subjectField.setValue(userKey.subject);
+    await this.messageField.setValue(userKey.message);
     const testFilePath = path.resolve("test/testData/testImage.png");
     await this.uploadFileButton.setValue(testFilePath);
     browser.on("dialog", async (dialog) => {
