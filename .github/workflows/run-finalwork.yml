@@ -6,7 +6,7 @@ on:
       - "finalwork"
   pull_request:
     branches:
-      - "**"
+      - "finalwork"
 
 jobs:
   testing:
