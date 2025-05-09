@@ -9,10 +9,6 @@ describe("User Account Tests", () => {
     await SignupPage.createNewAccount(TestData.fastUser);
   });
 
-  beforeEach(async () => {
-    await Header.navigate("https://www.automationexercise.com/");
-  });
-
   it("logs out from the account and verifies logout was successful", async () => {
     await Header.logout();
     await expect(Header.signupOrLoginButton).toBeDisplayed();

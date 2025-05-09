@@ -1,13 +1,8 @@
-import Header from "../pageobjects/components/header.js";
 import TestData from "../testData/testData.js";
 import ProductCard from "../pageobjects/components/productCard.js";
 import ProductPage from "../pageobjects/productPage.js";
 
 describe("Product Tests", () => {
-  beforeEach(async () => {
-    await Header.navigate("https://www.automationexercise.com/");
-  });
-
   TestData.idProduct.forEach((id) => {
     it(`validates name and price consistency for product ID: ${id}`, async () => {
       await expect(await ProductCard.verifyProductData(id)).toBeTruthy();

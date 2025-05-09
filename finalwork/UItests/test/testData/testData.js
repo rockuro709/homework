@@ -35,24 +35,32 @@ export default class TestData {
   };
 
   static feedbackUser = {
-    name: "feedback", // обязательное поле
-    email: "feedback@feedback", // обязательное поле
-    password: "feedback", // обязательное поле
-    firstName: "feedback", // обязательное поле
-    lastName: "feedback", // обязательное поле
-    address1: "feedback", // обязательное поле
-    state: "feedback", // обязательное поле
-    city: "feedback", // обязательное поле
-    zipcode: "feedback", // обязательное поле
-    mobileNumber: "feedback", // обязательное поле
-    subject: "feedback",
-    message: "feedback",
+    name: "456", // обязательное поле
+    email: "456@456", // обязательное поле
+    password: "456", // обязательное поле
+    firstName: "456", // обязательное поле
+    lastName: "456", // обязательное поле
+    address1: "456", // обязательное поле
+    state: "456", // обязательное поле
+    city: "456", // обязательное поле
+    zipcode: "456", // обязательное поле
+    mobileNumber: "456", // обязательное поле
+    subject: "456",
+    message: "456",
   };
 
-  static idProduct = [35, 2];
+  static idProduct = [35, 2, 30];
 
   static category = ["kids", "kids-tops&shirts"];
 
   static brand = "allen-solly-junior";
   //static brand = 'mast&harbour';
+
+  static paymentCard = {
+    name: "Tony",
+    number: "1234 1234 1234 1234",
+    CVC: "123",
+    expiryMonth: "11",
+    expiryYear: "2027",
+  };
 }

@@ -1,22 +1,60 @@
 import Base from "./base.js";
 import ProductCard from "./components/productCard.js";
 import ContinuePage from "./continuePage.js";
+import SignupPage from "./signupPage.js";
+import Header from "./components/header.js";
+import SignupLoginPage from "./signupLoginPage.js";
 
 class CartPage extends Base {
   get cartTable() {
     return $("#cart_info_table");
   }
 
-  get firstItem() {
-    return $('(//*[@class="cart_description"]//h4/a)[1]');
+  get namesOfItemsInCart() {
+    return $$('//*[@class="cart_description"]//h4/a');
   }
 
-  async addToCart(id) {
+  get quantityOfItemsInCart() {
+    return $$(".cart_quantity button");
+  }
+
+  get deleteButtonsOfItemsInCart() {
+    return $$(".fa.fa-times");
+  }
+
+  get emptyCartAlert() {
+    return $(".text-center b");
+  }
+
+  get proceedToCheckoutButton() {
+    return $(".btn.btn-default.check_out");
+  }
+
+  async addToCartAndContinueShopping(id) {
     await this.waitAndClick(await ProductCard.getAddToCartButtonById(id));
+    await this.waitAndClick(ContinuePage.continueShoppingButton);
+  }
 
+  async addToCartAndViewCart(id) {
+    await this.waitAndClick(await ProductCard.getAddToCartButtonById(id));
     await this.waitAndClick(ContinuePage.viewCartButton);
-
     await this.cartTable.waitForDisplayed();
+  }
+
+  async proceedToCheckoutWithSignUp(userKey) {
+    await this.proceedToCheckoutButton.click();
+    await this.waitAndClick(ContinuePage.checkoutRegisterLoginButton);
+    await SignupPage.createNewAccount(userKey);
+    await this.waitAndClick(Header.cartButton);
+    await this.waitAndClick(this.proceedToCheckoutButton);
+  }
+
+  async proceedToCheckoutWithLogin(userKey) {
+    await this.proceedToCheckoutButton.click();
+    await this.waitAndClick(ContinuePage.checkoutRegisterLoginButton);
+    await SignupLoginPage.login(userKey);
+    await this.waitAndClick(Header.cartButton);
+    await this.waitAndClick(this.proceedToCheckoutButton);
   }
 }
 

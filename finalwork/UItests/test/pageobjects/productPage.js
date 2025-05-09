@@ -1,5 +1,7 @@
 import Base from "./base.js";
 import ProductCard from "./components/productCard.js";
+import ContinuePage from "./continuePage.js";
+import CartPage from "./cartPage.js";
 
 class ProductPage extends Base {
   get name() {
@@ -49,6 +51,14 @@ class ProductPage extends Base {
     await this.reviewField.setValue(userKey.message);
     await this.reviewSubmitButton.click();
     await this.reviewSuccessfulAlert.waitForDisplayed();
+  }
+
+  async addToCartWithQuantityAndViewCart(id, quantity) {
+    await this.waitAndClick(await ProductCard.getViewProductButtonById(id));
+    await this.waitAndSetValue(this.quantityInput, quantity);
+    await this.addToCartButton.click();
+    await this.waitAndClick(ContinuePage.viewCartButton);
+    await CartPage.cartTable.waitForDisplayed();
   }
 }
 

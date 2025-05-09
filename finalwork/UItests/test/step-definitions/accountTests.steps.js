@@ -4,17 +4,12 @@ import SignupPage from "../pageobjects/signupPage.js";
 import SignupLoginPage from "../pageobjects/signupLoginPage.js";
 import TestData from "../testData/testData.js";
 
-// Background = BeforeEach
-Given("I open the home page", async () => {
-  await Header.navigate("https://www.automationexercise.com/");
-});
-
 // Scenario: Register user for testing = Before
 Given("I register a new user {string}", async (userKey) => {
   await SignupPage.createNewAccount(TestData[userKey]);
 });
 
-When("I log out", async () => {
+Given("I log out", async () => {
   await Header.logout();
 });
 
@@ -42,6 +37,6 @@ Then("I should be logged in as {string}", async (userKey) => {
   await expect(Header.loggedInAs).toHaveText(TestData[userKey].name);
 });
 
-When("I delete the account", async () => {
+Given("I delete the account", async () => {
   await Header.deleteAccount();
 });

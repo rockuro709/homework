@@ -1,4 +1,5 @@
 import Base from "../base.js";
+import ProductCard from "./productCard.js";
 
 class CategoryBrands extends Base {
   getCategoryMapping() {
@@ -82,6 +83,21 @@ class CategoryBrands extends Base {
       this.getBrandMapping()
     );
     return await this.chooseAndVerify(brandElement, brand);
+  }
+
+  async chooseBrandAndVerifyQuantityOfProducts(brand) {
+    const brandElement = await this.getElementByName(
+      brand,
+      this.getBrandMapping()
+    );
+
+    const countSpan = await brandElement.$("span");
+    const countText = await countSpan.getText();
+    const count = parseInt(countText.replace(/\D/g, ""), 10);
+    await this.waitAndClick(brandElement);
+    const cardsQuantity = await ProductCard.ArrayOfProductCards;
+
+    return count === cardsQuantity.length - 1;
   }
 }
 

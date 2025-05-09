@@ -1,12 +1,7 @@
-import Header from "../pageobjects/components/header.js";
 import TestData from "../testData/testData.js";
 import Footer from "../pageobjects/components/footer.js";
 
 describe("Footer Subscription Tests", () => {
-  beforeEach(async () => {
-    await Header.navigate("https://www.automationexercise.com/");
-  });
-
   it("subscribes a user to updates and verifies success alert is shown", async () => {
     await Footer.subscribe(TestData.feedbackUser);
     await expect(Footer.subscribeSuccessAlert).toBeDisplayed();

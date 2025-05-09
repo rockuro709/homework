@@ -114,7 +114,7 @@ export const config = {
   // with `/`, the base url gets prepended, not including the path portion of your baseUrl.
   // If your `url` parameter starts without a scheme or `/` (like `some/path`), the base url
   // gets prepended directly.
-  // baseUrl: 'http://localhost:8080',
+  baseUrl: "https://www.automationexercise.com/",
   //
   // Default timeout for all waitFor* commands.
   waitforTimeout: 10000,
@@ -170,18 +170,23 @@ export const config = {
   ...(useCucumber
     ? {
         cucumberOpts: {
-          require: ["./test/step-definitions/**/*.js"],
+          require: [
+            "./test/step-definitions/**/*.js",
+            "./test/support/cucumberHooks.js",
+          ],
           timeout: 60000,
           backtrace: true,
           dryRun: false,
           format: ["pretty"],
           snippets: true,
+          // tags: "@checkoutAndPaymentTests",
         },
       }
     : {
         mochaOpts: {
           ui: "bdd",
           timeout: 60000,
+          // grep: "Checkout and Payment Tests",
         },
       }),
 
@@ -200,13 +205,6 @@ export const config = {
    */
   // onPrepare: function (config, capabilities) {
   // },
-  /*     onPrepare: () => {
-        const reportDir = path.resolve(__dirname, './allure-results');
-        if (fs.existsSync(reportDir)) {
-            fs.rmSync(reportDir, { recursive: true, force: true });
-            console.log('Allure результаты очищены перед началом тестов.');
-        }
-    }, */
   /**
    * Gets executed before a worker process is spawned and can be used to initialize specific service
    * for that worker as well as modify runtime environments in an async fashion.
@@ -262,8 +260,9 @@ export const config = {
   /**
    * Function to be executed before a test (in Mocha/Jasmine) starts.
    */
-  // beforeTest: function (test, context) {
-  // },
+  beforeTest: async function (test, context) {
+    await browser.url("/");
+  },
   /**
    * Hook that gets executed _before_ a hook within the suite starts (e.g. runs before calling
    * beforeEach in Mocha)
@@ -286,26 +285,16 @@ export const config = {
    * @param {boolean} result.passed    true if test has passed, otherwise false
    * @param {object}  result.retries   information about spec related retries, e.g. `{ attempts: 0, limit: 0 }`
    */
-  afterTest: async function (
-    test,
-    context,
-    { error, result, duration, passed, retries }
-  ) {
-    if (!passed) {
+
+  afterTest: async function (test, context, { error }) {
+    if (error) {
       const timestamp = new Date().toISOString().replace(/[:.]/g, "-");
-      const testName = test.title.replace(/\s+/g, "_");
-      const fileName = `${testName}_${timestamp}.png`;
+      const fileName = `assertion-error-${timestamp}.png`;
       const filePath = path.join("error-shots", fileName);
-
-      // Убедимся, что папка существует
       fs.mkdirSync("error-shots", { recursive: true });
-
-      // Сохраняем скриншот
       await browser.saveScreenshot(filePath);
-
-      // Прикрепляем к Allure-отчёту
       addAttachment(
-        "Screenshot on Failure",
+        "Screenshot on Error",
         fs.readFileSync(filePath),
         "image/png"
       );
@@ -325,21 +314,8 @@ export const config = {
    * @param {number} result 0 - command success, 1 - command error
    * @param {object} error error object if any
    */
-  afterCommand: async function (commandName, args, result, error) {
-    if (error && error.message.includes("still not displayed")) {
-      // Делаем скриншот при ошибке ожидания появления элемента
-      const timestamp = new Date().toISOString().replace(/[:.]/g, "-");
-      const fileName = `error-${timestamp}.png`;
-      const filePath = path.join("error-shots", fileName);
-      fs.mkdirSync("error-shots", { recursive: true });
-      await browser.saveScreenshot(filePath);
-      addAttachment(
-        "Screenshot on Broken",
-        fs.readFileSync(filePath),
-        "image/png"
-      );
-    }
-  },
+  // afterCommand: async function (commandName, args, result, error) {
+  // },
 
   /**
    * Gets executed after all tests are done. You still have access to all global variables from

@@ -17,6 +17,10 @@ class ProductCard extends Base {
     );
   }
 
+  get ArrayOfProductCards() {
+    return $$(".col-sm-4");
+  }
+
   async verifyProductData(id) {
     const normalizeText = (text) => text.replace(/\s+/g, " ");
 

@@ -1,6 +1,6 @@
 export default class Base {
   async navigate(url) {
-    await browser.url(url);
+    await browser.url(url); //не использую
   }
   async waitAndClick(locator) {
     await locator.waitForDisplayed();

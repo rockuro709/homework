@@ -1,12 +1,10 @@
+@accountTests
 Feature: User Account Management
-
-  Background:
-    Given I open the home page
 
   Scenario: Register user for testing
     Given I register a new user "fastUser"
 
-  Scenario: User logs out and sees Signup/Login button
+  Scenario: User logs out and sees SignupOrLogin button
     When I log out
     Then I should see the SignupOrLogin button
 
