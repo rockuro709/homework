@@ -1,5 +1,5 @@
 @footerSubscriptionTests
-Feature: Footer
+Feature: Footer functionality
 
   Scenario: User subscribes to updates
     When I subscribe to updates with valid data

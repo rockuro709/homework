@@ -41,6 +41,13 @@ class CartPage extends Base {
     await this.cartTable.waitForDisplayed();
   }
 
+  async addToCartFewTimesAndViewCart(id, quantity) {
+    for (let i = 1; i < quantity; i++) {
+      await this.addToCartAndContinueShopping(id);
+    }
+    await this.addToCartAndViewCart(id);
+  }
+
   async proceedToCheckoutWithSignUp(userKey) {
     await this.proceedToCheckoutButton.click();
     await this.waitAndClick(ContinuePage.checkoutRegisterLoginButton);

@@ -1,5 +1,5 @@
 @contactUsTests
-Feature: Contact Us
+Feature: Contact Us functionality
 
   Scenario: User submits feedback through contact form
     When I open the contact form and submit it with valid data

@@ -56,6 +56,8 @@ export default class TestData {
   static brand = "allen-solly-junior";
   //static brand = 'mast&harbour';
 
+  static quantityToCart = [5, 10];
+
   static paymentCard = {
     name: "Tony",
     number: "1234 1234 1234 1234",

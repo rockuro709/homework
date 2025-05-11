@@ -1,5 +1,5 @@
 @productTests
-Feature: Product
+Feature: Product features
 
   Scenario Outline: Validate name and price consistency for products
     When I open the product page with ID <testDataIdProductIndex> from home page

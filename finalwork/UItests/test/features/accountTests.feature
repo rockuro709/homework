@@ -1,5 +1,5 @@
 @accountTests
-Feature: User Account Management
+Feature: User Account management
 
   Scenario: Register user for testing
     Given I register a new user "fastUser"

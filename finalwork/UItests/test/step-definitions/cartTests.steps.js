@@ -35,10 +35,10 @@ When(
     this.name = await (
       await ProductCard.getNameById(TestData.idProduct[1])
     ).getText();
-    for (let i = 1; i < quantity; i++) {
-      await CartPage.addToCartAndContinueShopping(TestData.idProduct[1]);
-    }
-    await CartPage.addToCartAndViewCart(TestData.idProduct[1]);
+    await CartPage.addToCartFewTimesAndViewCart(
+      TestData.idProduct[1],
+      quantity
+    );
   }
 );
 

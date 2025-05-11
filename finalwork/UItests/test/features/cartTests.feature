@@ -11,7 +11,7 @@ Feature: Cart functionality
     Then I should see the empty cart alert
 
   Scenario: Add same product few times and verify it appears and its quantity in the cart summary
-    When I add the product to the cart 5 times and go to the cart
+    When I add the product to the cart 4 times and go to the cart
     Then I should see the product in the cart
     And I should see correct quantity of product in the cart
 
@@ -21,6 +21,6 @@ Feature: Cart functionality
     Then I should see the empty cart alert
 
   Scenario: Add certain number of the product to the cart from product page and verify it appears and its quantity in the cart summary
-    When I add 10 items of the product to the cart from product page adn go to the cart
+    When I add 9 items of the product to the cart from product page adn go to the cart
     Then I should see the product in the cart
     And I should see correct quantity of product in the cart

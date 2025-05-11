@@ -179,14 +179,14 @@ export const config = {
           dryRun: false,
           format: ["pretty"],
           snippets: true,
-          // tags: "@checkoutAndPaymentTests",
+          tags: "@cartTests",
         },
       }
     : {
         mochaOpts: {
           ui: "bdd",
           timeout: 60000,
-          // grep: "Checkout and Payment Tests",
+          // grep: "Cart Tests",
         },
       }),
 

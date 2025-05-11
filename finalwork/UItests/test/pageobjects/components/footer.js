@@ -28,12 +28,3 @@ class Footer extends Base {
 }
 
 export default new Footer();
-
-// метод при включённой рекламе
-// async scrollUp() {
-//   await this.subscribeEmailField.scrollIntoView();
-//   const button = await this.scrollUpButton;
-//   await button.waitForDisplayed();
-//   await browser.execute((el) => el.click(), button);
-//   await button.waitForDisplayed({ reverse: true });
-// }

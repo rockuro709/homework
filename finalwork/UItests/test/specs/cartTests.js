@@ -23,11 +23,14 @@ describe("Cart Tests", () => {
     const name = await (
       await ProductCard.getNameById(TestData.idProduct[1])
     ).getText();
-    await CartPage.addToCartAndContinueShopping(TestData.idProduct[1]);
-    await CartPage.addToCartAndContinueShopping(TestData.idProduct[1]);
-    await CartPage.addToCartAndViewCart(TestData.idProduct[1]);
+    await CartPage.addToCartFewTimesAndViewCart(
+      TestData.idProduct[1],
+      TestData.quantityToCart[0]
+    );
     await expect(CartPage.namesOfItemsInCart[0]).toHaveText(name);
-    await expect(CartPage.quantityOfItemsInCart[0]).toHaveText("3");
+    await expect(CartPage.quantityOfItemsInCart[0]).toHaveText(
+      `${TestData.quantityToCart[0]}`
+    );
   });
 
   it("removes several items of the same product at a time from the cart and verifies empty cart", async () => {
@@ -42,9 +45,11 @@ describe("Cart Tests", () => {
     ).getText();
     await ProductPage.addToCartWithQuantityAndViewCart(
       TestData.idProduct[2],
-      4
+      TestData.quantityToCart[1]
     );
     await expect(CartPage.namesOfItemsInCart[0]).toHaveText(name);
-    await expect(CartPage.quantityOfItemsInCart[0]).toHaveText("4");
+    await expect(CartPage.quantityOfItemsInCart[0]).toHaveText(
+      `${TestData.quantityToCart[1]}`
+    );
   });
 });

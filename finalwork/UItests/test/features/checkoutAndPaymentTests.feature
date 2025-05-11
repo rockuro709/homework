@@ -1,5 +1,5 @@
 @checkoutAndPaymentTests
-Feature: Checkout and Payment
+Feature: Checkout and Payment functionality
 
   Scenario: Complete purchase with new user registration while checkout
     When I add the product to the cart and go to the cart

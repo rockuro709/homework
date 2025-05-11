@@ -1,5 +1,5 @@
 @categoryAndBrandTests
-Feature: Category and Brand Selection
+Feature: Category and Brand selection
 
   Scenario: Select category and verify products
     When I select a category

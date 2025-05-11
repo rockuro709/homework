@@ -86,11 +86,11 @@ class SignupPage extends Base {
       await this.yearOfBirthDropdown.selectByVisibleText(userKey.yearOfBirth);
     }
 
-    if (userKey.newsletterCheckbox === "yes") {
+    if (userKey.newsletterCheckboxData === "yes") {
       await this.newsletterCheckbox.click();
     }
 
-    if (userKey.specialOffersCheckbox === "yes") {
+    if (userKey.specialOffersCheckboxData === "yes") {
       await this.specialOffersCheckbox.click();
     }
 
