@@ -179,7 +179,7 @@ export const config = {
           dryRun: false,
           format: ["pretty"],
           snippets: true,
-          tags: "@cartTests",
+          // tags: "@cartTests",
         },
       }
     : {
