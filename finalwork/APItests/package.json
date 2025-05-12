@@ -11,7 +11,7 @@
     "test": "test"
   },
   "scripts": {
-    "test": "jest"
+    "test:jest": "jest"
   },
   "devDependencies": {
     "axios": "^1.8.4",

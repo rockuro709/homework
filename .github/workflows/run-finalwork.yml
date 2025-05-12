@@ -15,13 +15,18 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@v3
-      - name: Install Dependencies
+      - name: Install Dependencies UI
         working-directory: ./finalwork/UItests
         run: npm install
-      - name: ESLint check
+      - name: ESLint UI check
         working-directory: ./finalwork/UItests
         run: npm run lint
       - name: Run UI Tests
         working-directory: ./finalwork/UItests
         run: npm run test:cucumber
- 
+      - name: Install Dependencies API
+        working-directory: ./finalwork/APItests
+        run: npm install
+      - name: Run API Tests
+        working-directory: ./finalwork/APItests
+        run: npm run test:jest
