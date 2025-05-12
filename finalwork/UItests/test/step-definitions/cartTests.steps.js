@@ -1,7 +1,7 @@
 import { Given, When, Then } from "@wdio/cucumber-framework";
 import ProductCard from "../pageobjects/components/productCard.js";
 import CartPage from "../pageobjects/cartPage.js";
-import TestData from "../testData/testData.js";
+import TestData from "../../testData/testData.js";
 import Header from "../pageobjects/components/header.js";
 import ProductPage from "../pageobjects/productPage.js";
 

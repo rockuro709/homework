@@ -32,7 +32,7 @@ class ContactUsPage extends Base {
     await this.emailField.setValue(userKey.email);
     await this.subjectField.setValue(userKey.subject);
     await this.messageField.setValue(userKey.message);
-    const testFilePath = path.resolve("test/testData/testImage.png");
+    const testFilePath = path.resolve("testData/testImage.png");
     await this.uploadFileButton.setValue(testFilePath);
     browser.on("dialog", async (dialog) => {
       await dialog.accept();

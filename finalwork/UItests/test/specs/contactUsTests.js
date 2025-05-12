@@ -1,4 +1,4 @@
-import TestData from "../testData/testData.js";
+import TestData from "../../testData/testData.js";
 import ContactUsPage from "../pageobjects/contactUsPage.js";
 
 describe("Contact Us Tests", () => {

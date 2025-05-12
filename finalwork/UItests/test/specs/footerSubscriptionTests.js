@@ -1,4 +1,4 @@
-import TestData from "../testData/testData.js";
+import TestData from "../../testData/testData.js";
 import Footer from "../pageobjects/components/footer.js";
 
 describe("Footer Subscription Tests", () => {

@@ -1,6 +1,6 @@
 import { When, Then } from "@wdio/cucumber-framework";
 import CategoryBrands from "../pageobjects/components/categoryBrands.js";
-import TestData from "../testData/testData.js";
+import TestData from "../../testData/testData.js";
 
 When("I select a category", async function () {
   this.resultCategory = await CategoryBrands.chooseAndVerifyCategory(

@@ -1,4 +1,4 @@
-import TestData from "../testData/testData.js";
+import TestData from "../../testData/testData.js";
 import CategoryBrands from "../pageobjects/components/categoryBrands.js";
 
 describe("Category and Brand Selection Tests", () => {

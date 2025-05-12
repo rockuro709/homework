@@ -7,4 +7,7 @@ export default class Base {
     await locator.waitForDisplayed();
     await locator.setValue(value);
   }
+  async navigate(url) {
+    await browser.url(url);
+  }
 }

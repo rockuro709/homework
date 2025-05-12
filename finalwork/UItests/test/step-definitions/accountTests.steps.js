@@ -2,7 +2,7 @@ import { Given, When, Then } from "@wdio/cucumber-framework";
 import Header from "../pageobjects/components/header.js";
 import SignupPage from "../pageobjects/signupPage.js";
 import SignupLoginPage from "../pageobjects/signupLoginPage.js";
-import TestData from "../testData/testData.js";
+import TestData from "../../testData/testData.js";
 
 // Scenario: Register user for testing = Before
 Given("I register a new user {string}", async (userKey) => {

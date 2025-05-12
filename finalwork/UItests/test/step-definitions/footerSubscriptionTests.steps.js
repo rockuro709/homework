@@ -1,6 +1,6 @@
 import { When, Then } from "@wdio/cucumber-framework";
 import Footer from "../pageobjects/components/footer.js";
-import TestData from "../testData/testData.js";
+import TestData from "../../testData/testData.js";
 
 When("I subscribe to updates with valid data", async () => {
   await Footer.subscribe(TestData.feedbackUser);

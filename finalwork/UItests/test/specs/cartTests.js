@@ -1,4 +1,4 @@
-import TestData from "../testData/testData.js";
+import TestData from "../../testData/testData.js";
 import ProductCard from "../pageobjects/components/productCard.js";
 import CartPage from "../pageobjects/cartPage.js";
 import Header from "../pageobjects/components/header.js";

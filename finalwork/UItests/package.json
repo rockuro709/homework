@@ -13,7 +13,7 @@
     "clean": "rimraf allure-report/ && rimraf allure-results/ && rimraf error-shots/",
     "open:report": "allure generate && allure open",
     "wdio": "npm run clean && wdio run ./wdio.conf.js",
-    "postinstall": "node scripts/installUblock.js",
+    "postinstall": "node installScripts/installUblock.js",
     "lint": "npx eslint test/",
     "test:mocha": "npm run clean && cross-env TEST_FRAMEWORK=mocha wdio run wdio.conf.js",
     "test:cucumber": "npm run clean && cross-env TEST_FRAMEWORK=cucumber wdio run wdio.conf.js"
