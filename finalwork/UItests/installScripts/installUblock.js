@@ -4,7 +4,7 @@ import unzipper from "unzipper";
 
 const ZIP_URL =
   "https://github.com/uBlockOrigin/uBOL-home/releases/download/uBOLite_2025.4.27.1394/uBOLite_2025.4.27.1394.chromium.mv3.zip";
-const OUT_DIR = path.resolve(process.cwd(), "extensions/ublockOriginLite");
+const OUT_DIR = path.resolve(process.cwd(), "webExtensions/ublockOriginLite");
 
 async function downloadAndUnzip() {
   // 1. Создаём папку (рекурсивно) если надо
