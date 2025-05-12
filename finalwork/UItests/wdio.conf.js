@@ -77,7 +77,7 @@ export const config = {
           // "--no-sandbox",
           // "--enable-logging",
           "window-size=1920,1080",
-          `--load-extension=${process.cwd()}/extensions/ublockOriginLite`,
+          `--load-extension=${process.cwd()}/webExtensions/ublockOriginLite`,
         ],
       },
     },
@@ -178,7 +178,6 @@ export const config = {
           backtrace: true,
           dryRun: false,
           format: ["pretty"],
-          snippets: true,
           // tags: "@cartTests",
         },
       }
