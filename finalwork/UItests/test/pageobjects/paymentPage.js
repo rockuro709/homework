@@ -35,7 +35,6 @@ class PaymentPage extends Base {
     await this.paymentCardExpiryMonthField.setValue(paymentCard.expiryMonth);
     await this.paymentCardExpiryYearField.setValue(paymentCard.expiryYear);
     await this.payAndConfirmOrderButton.click();
-    // await browser.pause(2000);
     await this.downloadInvoiceButton.waitForDisplayed();
   }
 }
