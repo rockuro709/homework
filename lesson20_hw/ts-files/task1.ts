@@ -6,7 +6,7 @@ export interface User {
   children?: number;
 }
 
-const users = [
+const users: User[] = [
   {
     name: "Max Mustermann",
     age: 25,
