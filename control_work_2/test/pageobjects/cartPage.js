@@ -25,6 +25,3 @@ class CartPage extends Base {
 }
 
 export default new CartPage();
-
-//    get allItemsNames() { return $$('.cart_description h4 a'); }
-//    const allItems = await this.allItemsNames;
