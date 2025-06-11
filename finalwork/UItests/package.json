@@ -1,7 +1,6 @@
 {
   "name": "finalwork",
   "version": "1.0.0",
-  "description": "",
   "license": "ISC",
   "author": "Tratsevskii Anton",
   "type": "module",
@@ -42,5 +41,6 @@
     "open": "^10.1.1",
     "rimraf": "^6.0.1",
     "unzipper": "^0.12.3"
-  }
+  },
+  "description": ""
 }
