@@ -3,7 +3,7 @@ name: Run unit tests
 on:
   push:
     branches:
-      - "main"
+      - "main1"
   pull_request:
     branches:
       - "lesson9_hw"
@@ -21,4 +21,3 @@ jobs:
       - name: Run Unit Test
         working-directory: ./lesson9_hw/mocha
         run: npm run test
- 
