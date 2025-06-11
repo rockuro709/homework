@@ -3,7 +3,7 @@ name: Run finalwork tests
 on:
   push:
     branches:
-      - "finalwork"
+      - "main"
   pull_request:
     branches:
       - "finalwork"
